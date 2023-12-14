@@ -2,9 +2,6 @@
   #+begin_src shell
     cat celeste > everything
   #+end_src
-#+begin_src shell
-  cat celeste > everything
-#+end_src
 * Celeste
 ** generate playlist
    #+begin_src shell
