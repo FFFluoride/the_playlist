@@ -30,9 +30,9 @@
 * TODO Isaac Antibirth
 * TODO Minecraft
 * TODO Stardew Valley
-* TODO Random Playlist [0/5]
+* TODO Random Playlist [1/5]
   - [ ] Naz - Tay K Returns to Dreamland 4
-  - [ ] Pink Clouds and sticky rain (lookup xidnaf)
+  - [X] Pink Clouds and sticky rain (lookup xidnaf)
   - [ ] smash bros brawl main theme
   - [ ] smash bros ultimate main theme
   - [ ] Xomu - Walpurgis Night
