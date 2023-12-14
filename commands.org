@@ -17,22 +17,23 @@
 ** Hollow Knight
    - id: =PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko=
    - name: =hollow_knight=
-* TODO Tailored playlist
-* TODO Terraria
-* TODO Calamity Mod (Including extra)
-* TODO Calamity Infernum Mod
-* TODO Baba
-* TODO Deltarune
-* TODO Undertale
-* TODO Isaac Afterbirth
-* TODO Isaac Afterbirth+
-* TODO Isaac Repentance
-* TODO Isaac Antibirth
-* TODO Minecraft
-* TODO Stardew Valley
-* TODO Random Playlist [1/5]
-  - [ ] Naz - Tay K Returns to Dreamland 4
-  - [X] Pink Clouds and sticky rain (lookup xidnaf)
-  - [ ] smash bros brawl main theme
-  - [ ] smash bros ultimate main theme
-  - [ ] Xomu - Walpurgis Night
+* Goals [0/14]
+** TODO Tailored playlist
+** TODO Terraria
+** TODO Calamity Mod (Including extra)
+** TODO Calamity Infernum Mod
+** TODO Baba
+** TODO Deltarune
+** TODO Undertale
+** TODO Isaac Afterbirth
+** TODO Isaac Afterbirth+
+** TODO Isaac Repentance
+** TODO Isaac Antibirth
+** TODO Minecraft
+** TODO Stardew Valley
+** TODO Random Playlist [1/5]
+   - [ ] Naz - Tay K Returns to Dreamland 4
+   - [X] Pink Clouds and sticky rain (lookup xidnaf)
+   - [ ] smash bros brawl main theme
+   - [ ] smash bros ultimate main theme
+   - [ ] Xomu - Walpurgis Night
