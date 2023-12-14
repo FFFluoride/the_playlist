@@ -1,0 +1,16 @@
+* Generate 'anything' playlist
+  #+begin_src shell
+    cat celeste > everything
+  #+end_src
+#+begin_src shell
+  cat celeste > everything
+#+end_src
+* Celeste
+** generate playlist
+   #+begin_src shell
+     yt-dlp --restrict-filenames PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB -o 'pool/%(title)s.opus' --get-filename > celeste
+   #+end_src
+** download playlist
+   #+begin_src shell
+     yt-dlp -x --audio-quality 0 --restrict-filenames PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB -o '%(title)s'
+   #+end_src
