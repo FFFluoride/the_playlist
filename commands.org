@@ -12,8 +12,8 @@
   #+end_src
 * Playlist
 ** Celeste
-   - id -> =PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB=
-   - name -> =celeste=
+   - id: =PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB=
+   - name: =celeste=
 ** Hollow Knight
-   - id -> =PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko=
-   - name -> =hollow_knight=
+   - id: =PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko=
+   - name: =hollow_knight=
