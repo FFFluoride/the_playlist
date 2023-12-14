@@ -2,12 +2,18 @@
   #+begin_src shell
     cat celeste > everything
   #+end_src
-* Celeste
-** generate playlist
-   #+begin_src shell
-     yt-dlp --restrict-filenames PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB -o 'pool/%(title)s.opus' --get-filename > celeste
-   #+end_src
-** download playlist
-   #+begin_src shell
-     yt-dlp -x --audio-quality 0 --restrict-filenames PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB -o '%(title)s'
-   #+end_src
+* Generate a specific playlist
+  #+begin_src shell
+    yt-dlp --restrict-filenames '<playlist-id>' -o 'pool/%(title)s.opus' --get-filename > '<playlist-name>'
+  #+end_src
+* Download videos
+  #+begin_src shell
+    yt-dlp -x --audio-quality 0 --restrict-filenames '<playlist-id>' -o '%(title)s'
+  #+end_src
+* Playlist
+** Celeste
+   - id -> =PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB=
+   - name -> =celeste=
+** Hollow Knight
+   - id -> =PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko=
+   - name -> =hollow_knight=
