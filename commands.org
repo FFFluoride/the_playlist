@@ -38,9 +38,9 @@
     - [ ] Isaac Antibirth
   - [ ] Minecraft
   - [ ] Stardew Valley
-  - [-] Random Playlist [1/5]
+  - [ ] Random Playlist [0/5]
     - [ ] Naz - Tay K Returns to Dreamland 4
-    - [X] Pink Clouds and sticky rain (lookup xidnaf)
+    - [ ] Pink Clouds and sticky rain (lookup xidnaf)
     - [ ] smash bros brawl main theme
     - [ ] smash bros ultimate main theme
     - [ ] Xomu - Walpurgis Night
