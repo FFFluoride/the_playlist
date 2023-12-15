@@ -53,7 +53,16 @@
 ** Stardew Valley
    - id: =PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p=
    - name: =stardew_valley=
-* Goals [0/10]
+** Cassette beasts
+   - id: =PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD=
+   - name: =cassette_beasts=
+** Rivals of aether
+   - id: =PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07=
+   - name: =RoA=
+** Rhythm doctor
+   - id: =PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k=
+   - name: =rhythm_doctor=
+* Goals [0/13]
   - [ ] Tailored playlist
   - [-] Terraria
     - [X] ID acquired
@@ -93,6 +102,15 @@
     - [X] ID acquired
     - [ ] Playlist generated
   - [-] Stardew Valley
+    - [X] ID acquired
+    - [ ] Playlist generated
+  - [-] Cassette beasts
+    - [X] ID acquired
+    - [ ] Playlist generated
+  - [-] Rivals of aether
+    - [X] ID acquired
+    - [ ] Playlist generated
+  - [-] Rhythm doctor
     - [X] ID acquired
     - [ ] Playlist generated
 * Random Playlist [0/1]
