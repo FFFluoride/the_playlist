@@ -20,23 +20,27 @@
 ** Terraria
    - id: =PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ=
    - name: =terraria=
-* Goals [0/8]
+** Calmity
+   - id: =PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW=
+   - name: =calamity=
+* Goals [2/11]
   - [ ] Tailored playlist
-  - [ ] Terraria
-  - [ ] Calamity Mod (Including extra)
+  - [X] Terraria
+  - [X] Calamity Mod (Including extra)
   - [ ] Calamity Infernum Mod
   - [ ] Baba
   - [ ] Deltarune
   - [ ] Undertale
-  - [ ] Isaac Afterbirth
-  - [ ] Isaac Afterbirth+
-  - [ ] Isaac Repentance
-  - [ ] Isaac Antibirth
+  - [ ] Isaac [0/4]
+    - [ ] Isaac Afterbirth
+    - [ ] Isaac Afterbirth+
+    - [ ] Isaac Repentance
+    - [ ] Isaac Antibirth
   - [ ] Minecraft
   - [ ] Stardew Valley
-  - [ ] Random Playlist [1/5]
-   - [ ] Naz - Tay K Returns to Dreamland 4
-   - [X] Pink Clouds and sticky rain (lookup xidnaf)
-   - [ ] smash bros brawl main theme
-   - [ ] smash bros ultimate main theme
-   - [ ] Xomu - Walpurgis Night
+  - [-] Random Playlist [1/5]
+    - [ ] Naz - Tay K Returns to Dreamland 4
+    - [X] Pink Clouds and sticky rain (lookup xidnaf)
+    - [ ] smash bros brawl main theme
+    - [ ] smash bros ultimate main theme
+    - [ ] Xomu - Walpurgis Night
