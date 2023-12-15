@@ -62,7 +62,7 @@
 ** Rhythm doctor
    - id: =PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k=
    - name: =rhythm_doctor=
-* Goals [7/13]
+* Goals [12/13]
   - [ ] Tailored playlist
   - [X] Terraria
     - [X] ID acquired
@@ -95,21 +95,21 @@
     - [X] Isaac Antibirth
       - [X] ID acquired
       - [X] Playlist generated
-  - [-] Minecraft
+  - [X] Minecraft
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Stardew Valley
+    - [X] Playlist generated
+  - [X] Stardew Valley
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Cassette beasts
+    - [X] Playlist generated
+  - [X] Cassette beasts
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Rivals of aether
+    - [X] Playlist generated
+  - [X] Rivals of aether
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Rhythm doctor
+    - [X] Playlist generated
+  - [X] Rhythm doctor
     - [X] ID acquired
-    - [ ] Playlist generated
+    - [X] Playlist generated
 * Random Playlist [0/1]
 ** making it
   - [ ] Make a youtube playlist with random stuff
