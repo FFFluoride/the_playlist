@@ -39,11 +39,8 @@
    - id: =PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo=
    - name: =isaac_rebirth=
 ** Isaac Afterbirth
-   - id: =PLhPp-QAUKF_gJ9eB-wSlfliMT_6ymDuiI=
+   - id: =PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_=
    - name: =isaac_afterbirth=
-** Issac Afterbirth+
-   - id: =PLyfXx1BeqwFYQiZXcc2y-UqYHTtKh2ATg=
-   - name =issac_afterbirth_plus=
 ** Isaac Repentance
    - id: =PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf=
    - name: =isaac_repentance=
@@ -65,42 +62,39 @@
 ** Rhythm doctor
    - id: =PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k=
    - name: =rhythm_doctor=
-* Goals [1/13]
+* Goals [7/13]
   - [ ] Tailored playlist
   - [X] Terraria
     - [X] ID acquired
     - [X] Playlist generated
-  - [-] Calamity Mod (Including extra)
+  - [X] Calamity Mod (Including extra)
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Calamity Infernum Mod
+    - [X] Playlist generated
+  - [X] Calamity Infernum Mod
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Baba
+    - [X] Playlist generated
+  - [X] Baba
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Deltarune
+    - [X] Playlist generated
+  - [X] Deltarune
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Undertale
+    - [X] Playlist generated
+  - [X] Undertale
     - [X] ID acquired
-    - [ ] Playlist generated
-  - [-] Isaac [0/5]
-    - [-] Issac Rebirth
+    - [X] Playlist generated
+  - [X] Isaac [4/4]
+    - [X] Issac Rebirth
       - [X] ID acquired
-      - [ ] Playlist generated
-    - [-] Isaac Afterbirth
+      - [X] Playlist generated
+    - [X] Isaac Afterbirth
       - [X] ID acquired
-      - [ ] Playlist generated
-    - [-] Isaac Afterbirth+
+      - [X] Playlist generated
+    - [X] Isaac Repentance
       - [X] ID acquired
-      - [ ] Playlist generated
-    - [-] Isaac Repentance
+      - [X] Playlist generated
+    - [X] Isaac Antibirth
       - [X] ID acquired
-      - [ ] Playlist generated
-    - [-] Isaac Antibirth
-      - [X] ID acquired
-      - [ ] Playlist generated
+      - [X] Playlist generated
   - [-] Minecraft
     - [X] ID acquired
     - [ ] Playlist generated
