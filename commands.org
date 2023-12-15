@@ -23,7 +23,16 @@
 ** Calmity
    - id: =PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW=
    - name: =calamity=
-* Goals [0/11]
+** Baba
+   - id: =PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo=
+   - name: =baba=
+** Deltarune
+   - id: =PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ=
+   - name: =deltarune=
+** Undertale
+   - id: =PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg=
+   - name: =undertale=
+* Goals [0/10]
   - [ ] Tailored playlist
   - [-] Terraria
     - [X] ID acquired
@@ -34,14 +43,14 @@
   - [ ] Calamity Infernum Mod
     - [ ] ID acquired
     - [ ] Playlist generated
-  - [ ] Baba
-    - [ ] ID acquired
+  - [-] Baba
+    - [X] ID acquired
     - [ ] Playlist generated
-  - [ ] Deltarune
-    - [ ] ID acquired
+  - [-] Deltarune
+    - [X] ID acquired
     - [ ] Playlist generated
-  - [ ] Undertale
-    - [ ] ID acquired
+  - [-] Undertale
+    - [X] ID acquired
     - [ ] Playlist generated
   - [ ] Isaac [0/4]
     - [ ] Isaac Afterbirth
