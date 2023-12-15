@@ -1,4 +1,4 @@
-* Generate 'anything' playlist
+* Generate 'everything' playlist
   #+begin_src shell
     cat celeste > everything
   #+end_src
