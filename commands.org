@@ -32,6 +32,27 @@
 ** Undertale
    - id: =PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg=
    - name: =undertale=
+** Isaac Rebirth
+   - id: =PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo=
+   - name: =isaac_rebirth=
+** Isaac Afterbirth
+   - id: =PLhPp-QAUKF_gJ9eB-wSlfliMT_6ymDuiI=
+   - name: =isaac_afterbirth=
+** Issac Afterbirth+
+   - id: =PLyfXx1BeqwFYQiZXcc2y-UqYHTtKh2ATg=
+   - name =issac_afterbirth_plus=
+** Isaac Repentance
+   - id: =PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf=
+   - name: =isaac_repentance=
+** Isaac Antibirth 
+   - id: =PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ=
+   - name: =isaac_antibirth=
+** Minecraft
+   - id: =PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l=
+   - name: =minecraft=
+** Stardew Valley
+   - id: =PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p=
+   - name: =stardew_valley=
 * Goals [0/10]
   - [ ] Tailored playlist
   - [-] Terraria
@@ -52,24 +73,27 @@
   - [-] Undertale
     - [X] ID acquired
     - [ ] Playlist generated
-  - [ ] Isaac [0/4]
-    - [ ] Isaac Afterbirth
-      - [ ] ID acquired
+  - [-] Isaac [0/5]
+    - [-] Issac Rebirth
+      - [X] ID acquired
       - [ ] Playlist generated
-    - [ ] Isaac Afterbirth+
-      - [ ] ID acquired
+    - [-] Isaac Afterbirth
+      - [X] ID acquired
       - [ ] Playlist generated
-    - [ ] Isaac Repentance
-      - [ ] ID acquired
+    - [-] Isaac Afterbirth+
+      - [X] ID acquired
       - [ ] Playlist generated
-    - [ ] Isaac Antibirth
-      - [ ] ID acquired
+    - [-] Isaac Repentance
+      - [X] ID acquired
       - [ ] Playlist generated
-  - [ ] Minecraft
-    - [ ] ID acquired
+    - [-] Isaac Antibirth
+      - [X] ID acquired
+      - [ ] Playlist generated
+  - [-] Minecraft
+    - [X] ID acquired
     - [ ] Playlist generated
-  - [ ] Stardew Valley
-    - [ ] ID acquired
+  - [-] Stardew Valley
+    - [X] ID acquired
     - [ ] Playlist generated
 * Random Playlist [0/1]
 ** making it
