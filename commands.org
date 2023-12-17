@@ -4,11 +4,11 @@
   #+end_src
 * Generate a specific playlist
   #+begin_src shell
-    yt-dlp --restrict-filenames '<playlist-id>' -o 'pool/%(title)s.opus' --get-filename > '<playlist-name>'
+    yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename '<playlist-id>' > '<playlist-name>'
   #+end_src
 * Download videos
   #+begin_src shell
-    yt-dlp -x --audio-quality 0 --restrict-filenames '<playlist-id>' -o '%(title)s'
+    yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' '<playlist-id>'
   #+end_src
 * Playlists
 ** Celeste
@@ -44,7 +44,7 @@
 ** Isaac Repentance
    - id: =PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf=
    - name: =isaac_repentance=
-** Isaac Antibirth 
+** Isaac Antibirth
    - id: =PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ=
    - name: =isaac_antibirth=
 ** Minecraft
