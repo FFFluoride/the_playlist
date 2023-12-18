@@ -68,23 +68,7 @@
   #+end_src
 * All Playlist names
   #+begin_src shell
-    celeste
-    hollow_knight
-    terraria
-    calamity
-    calamity_infernum
-    baba
-    deltarune
-    undertale
-    isaac_rebirth
-    isaac_afterbirth
-    isaac_repentance
-    isaac_antibirth
-    minecraft
-    stardew_valley
-    cassette_beasts
-    RoA
-    rhythm_doctor
+    names="celeste hollow_knight terraria calamity calamity_infernum baba deltarune undertale isaac_rebirth isaac_afterbirth isaac_repentance isaac_antibirth minecraft stardew_valley cassette_beasts RoA rhythm_doctor"
   #+end_src
 * Goals [12/13]
   - [ ] Tailored playlist
