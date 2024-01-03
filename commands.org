@@ -1,14 +1,14 @@
 * Generate 'everything' playlist
   #+begin_src shell
-    cat celeste hollow_knight terraria calamity calamity_infernum baba deltarune undertale isaac_rebirth isaac_afterbirth isaac_repentance isaac_antibirth minecraft stardew_valley cassette_beasts RoA rhythm_doctor > everything
+    cat celeste hollow_knight terraria calamity calamity_infernum baba deltarune undertale isaac_rebirth isaac_afterbirth isaac_repentance isaac_antibirth minecraft stardew_valley cassette_beasts RoA rhythm_doctor > everything && notify-send "Generated everything"
   #+end_src
 * Generate a specific playlist
   #+begin_src shell
-    yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename '<playlist-id>' > '<playlist-name>'
+    yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename '<playlist-id>' > '<playlist-name>' && notify-send "Finished generating playlist"
   #+end_src
 * Download videos
   #+begin_src shell
-    yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' '<playlist-id>'
+    yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' '<playlist-id>' && notify-send "Download Finished"
   #+end_src
 * Playlists
 ** Celeste
