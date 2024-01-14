@@ -8,7 +8,18 @@
   #+begin_src shell
   yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename '<playlist-id>' > '<playlist-name>' && notify-send "Finished generating playlist"
   #+end_src
-* Download videos
+* Download every song
+_Put this in a .sh file and run in the pool directory_
+#+begin_src shell
+  playlists="PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_ PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07 PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k"
+  for playlist in $playlists;
+  do
+      yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$playlist";
+  done;
+
+  notify-send "Finished downloading every song"
+#+end_src
+* Download a song
   _Run this in the pool directory_
   #+begin_src shell
     yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' '<playlist-id>' && notify-send "Download Finished"
