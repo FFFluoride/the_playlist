@@ -1,8 +1,37 @@
 * Generate 'everything' playlist
   _Run this in the toplevel directory_
   #+begin_src shell
-    cat celeste hollow_knight terraria calamity calamity_infernum baba deltarune undertale isaac_rebirth isaac_afterbirth isaac_repentance isaac_antibirth minecraft stardew_valley cassette_beasts RoA rhythm_doctor > everything && notify-send "Generated everything"
+    cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u > everything.m3u && notify-send "Generated everything"
   #+end_src
+* Generate every playlist
+_Put this in a .sh files and run in the pool directory_
+#+begin_src shell
+  playlists=(
+      PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB:celeste.m3u
+      PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko:hollow_knight.m3u
+      PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ:terraria.m3u
+      PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW:calamity.m3u
+      PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV:calamity_infernum.m3u
+      PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo:baba.m3u
+      PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ:deltarune.m3u
+      PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg:undertale.m3u
+      PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo:isaac_rebirth.m3u
+      PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_:isaac_afterbirth.m3u
+      PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf:isaac_repentance.m3u
+      PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ:isaac_antibirth.m3u
+      PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l:minecraft.m3u
+      PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p:stardew_valley.m3u
+      PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD:cassette_beasts.m3u
+      PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07:RoA.m3u
+      PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k:rhythm_doctor.m3u
+  )
+
+  for playlist_item in ${playlists[@]}; do
+      yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename "$(echo ${playlist_item##:*})" > "$(echo ${playlist_item##*:})"
+  done
+
+  notify-send "Finished generating all playlists"
+#+end_src
 * Generate a specific playlist
   _Run this in the toplevel directory_
   #+begin_src shell
@@ -27,62 +56,62 @@ _Put this in a .sh file and run in the pool directory_
 * Playlists
 ** Celeste
    - id: =PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB=
-   - name: =celeste=
+   - name: =celeste.m3u=
 ** Hollow Knight
    - id: =PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko=
-   - name: =hollow_knight=
+   - name: =hollow_knight.m3u=
 ** Terraria
    - id: =PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ=
-   - name: =terraria=
+   - name: =terraria.m3u=
 ** Calamity
    - id: =PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW=
-   - name: =calamity=
+   - name: =calamity.m3u=
 ** Calamity infernum
    - id: =PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV=
-   - name: =calamity_infernum=
+   - name: =calamity_infernum.m3u=
 ** Baba
    - id: =PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo=
-   - name: =baba=
+   - name: =baba.m3u=
 ** Deltarune
    - id: =PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ=
-   - name: =deltarune=
+   - name: =deltarune.m3u=
 ** Undertale
    - id: =PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg=
-   - name: =undertale=
+   - name: =undertale.m3u=
 ** Isaac Rebirth
    - id: =PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo=
-   - name: =isaac_rebirth=
+   - name: =isaac_rebirth.m3u=
 ** Isaac Afterbirth
    - id: =PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_=
-   - name: =isaac_afterbirth=
+   - name: =isaac_afterbirth.m3u=
 ** Isaac Repentance
    - id: =PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf=
-   - name: =isaac_repentance=
+   - name: =isaac_repentance.m3u=
 ** Isaac Antibirth
    - id: =PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ=
-   - name: =isaac_antibirth=
+   - name: =isaac_antibirth.m3u=
 ** Minecraft
    - id: =PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l=
-   - name: =minecraft=
+   - name: =minecraft.m3u=
 ** Stardew Valley
    - id: =PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p=
-   - name: =stardew_valley=
+   - name: =stardew_valley.m3u=
 ** Cassette beasts
    - id: =PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD=
-   - name: =cassette_beasts=
+   - name: =cassette_beasts.m3u=
 ** Rivals of aether
    - id: =PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07=
-   - name: =RoA=
+   - name: =RoA.m3u=
 ** Rhythm doctor
    - id: =PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k=
-   - name: =rhythm_doctor=
+   - name: =rhythm_doctor.m3u=
 * All Playlist IDs
   #+begin_src shell
     playlists="PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_ PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07 PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k"
   #+end_src
 * All Playlist names
   #+begin_src shell
-    names="celeste hollow_knight terraria calamity calamity_infernum baba deltarune undertale isaac_rebirth isaac_afterbirth isaac_repentance isaac_antibirth minecraft stardew_valley cassette_beasts RoA rhythm_doctor"
+    names="celeste.m3u hollow_knight.m3u terraria.m3u calamity.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u"
   #+end_src
 * Goals [12/13]
   - [ ] Tailored playlist
