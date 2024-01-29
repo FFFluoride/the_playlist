@@ -1,4 +1,5 @@
 playlists=(
+    PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU:balatro.m3u
     PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB:celeste.m3u
     PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko:hollow_knight.m3u
     PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ:terraria.m3u
@@ -23,3 +24,23 @@ for playlist_item in ${playlists[@]}; do
 done
 
 notify-send "Finished generating all playlists"
+
+balatro_name="balatro.m3u"
+
+for playlist_item in ${playlists[@]}; do
+    if [ "$balatro_name" = "$(echo ${playlist_item##*:})" ]; then
+	mkdir -p "pool/tmp"
+	cd "pool/tmp"
+	echo "$(echo ${playlist_item##:*})"
+	yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${playlist_item##:*})";
+	balatro_list="$(ls -1)"
+	for track in $balatro_list; do
+	    echo "track: ($track)"
+	    ffmpeg -y -i "$track" -filter:a "atempo=0.75" -vn "../$track"
+	done
+	rm "tmp" -rf
+    else
+	echo "${playlist_item##:*}"
+	yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
+    fi
+done;

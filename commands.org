@@ -1,12 +1,13 @@
 * Generate 'everything' playlist
-  _Run this in the toplevel directory_
+_Run this in the toplevel directory_
   #+begin_src shell
-    cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u > everything.m3u && notify-send "Generated everything"
+    cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u balatro.m3u > everything.m3u && notify-send "Generated everything"
   #+end_src
-* Generate every playlist
-_Put this in a .sh files and run in the pool directory_
+* Download and generate every playlist
+_Run this in the toplevel directory_
 #+begin_src shell
   playlists=(
+      PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU:balatro.m3u
       PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB:celeste.m3u
       PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko:hollow_knight.m3u
       PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ:terraria.m3u
@@ -31,23 +32,33 @@ _Put this in a .sh files and run in the pool directory_
   done
 
   notify-send "Finished generating all playlists"
+
+  balatro_name="balatro.m3u"
+
+  for playlist_item in ${playlists[@]}; do
+      if [ "$balatro_name" = "$(echo ${playlist_item##*:})" ]; then
+	  mkdir -p "pool/tmp"
+	  cd "pool/tmp"
+	  echo "$(echo ${playlist_item##:*})"
+	  yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${playlist_item##:*})";
+	  balatro_list="$(ls -1)"
+	  for track in $balatro_list; do
+	      echo "track: ($track)"
+	      ffmpeg -y -i "$track" -filter:a "atempo=0.75" -vn "../$track"
+	  done
+	  rm "tmp" -rf
+      else
+	  echo "${playlist_item##:*}"
+	  yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
+      fi
+  done;
 #+end_src
 * Generate a specific playlist
   _Run this in the toplevel directory_
+  _Don't download anything in the 'balatro.m3u' playlist unless you want to hear it sped up._
   #+begin_src shell
   yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename '<playlist-id>' > '<playlist-name>' && notify-send "Finished generating playlist"
   #+end_src
-* Download every song
-_Put this in a .sh file and run in the pool directory_
-#+begin_src shell
-  playlists="PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_ PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07 PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k"
-  for playlist in $playlists;
-  do
-      yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$playlist";
-  done;
-
-  notify-send "Finished downloading every song"
-#+end_src
 * Download a song
   _Run this in the pool directory_
   #+begin_src shell
