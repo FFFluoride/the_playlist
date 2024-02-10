@@ -183,3 +183,4 @@ _Run this in the toplevel directory_
   - [ ] smash bros brawl main theme
   - [ ] smash bros ultimate main theme
   - [ ] Xomu - Walpurgis Night
+  - [ ] Terraria Slimeium Mod OST - Gelatinous Grasslands
