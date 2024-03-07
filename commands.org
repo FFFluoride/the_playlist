@@ -17,17 +17,18 @@ _Run this in the toplevel directory_
       PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ:deltarune.m3u
       PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg:undertale.m3u
       PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo:isaac_rebirth.m3u
-      PLyfXx1BeqwFa91omolDHEBUUC2Ip8f0l_:isaac_afterbirth.m3u
-      PL_sXFbaP261ituF7mOuSGHhfmn9G6GIwf:isaac_repentance.m3u
+      PLhPp-QAUKF_gJ9eB-wSlfliMT_6ymDuiI:isaac_afterbirth.m3u
+      PL_sXFbaP261h0WAWyJWKHbLa_haABQHBt:isaac_repentance.m3u
       PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ:isaac_antibirth.m3u
-      PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l:minecraft.m3u
-      PLoku_1Va0MjwRzYb1yfBS3Ob5eyKbBi2p:stardew_valley.m3u
+      PLNG8gFz9vUpsLXnWdCEf0svaFEfbY-kHh:minecraft.m3u
+      PLyfXx1BeqwFbl5jg6swxk1XonI-4ldG9X:stardew_valley.m3u
       PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD:cassette_beasts.m3u
-      PLCPLpSD-PMt7l7ZYcdLgBVH7VqmL-VC07:RoA.m3u
+      PLTsWV3v1dCwpsDgjj2MLiBugQGH_H8D09:RoA.m3u
       PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k:rhythm_doctor.m3u
   )
 
   for playlist_item in ${playlists[@]}; do
+      echo "Generating $(echo ${playlist_item##*:})"
       yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename "$(echo ${playlist_item##:*})" > "$(echo ${playlist_item##*:})"
   done
 
@@ -48,7 +49,7 @@ _Run this in the toplevel directory_
 	  done
 	  rm "tmp" -rf
       else
-	  echo "${playlist_item##:*}"
+	  echo "Downloading: $(echo ${playlist_item##:*})"
 	  yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
       fi
   done;
@@ -172,6 +173,9 @@ _Run this in the toplevel directory_
   - [X] Rhythm doctor
     - [X] ID acquired
     - [X] Playlist generated
+  - [ ] TF2
+    - [ ] ID acquired
+    - [ ] Playlist generated
 * Random Playlist [0/1]
 ** making it
   - [ ] Make a youtube playlist with random stuff
