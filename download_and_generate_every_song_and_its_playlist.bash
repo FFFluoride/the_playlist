@@ -39,7 +39,9 @@ for playlist_item in ${playlists[@]}; do
 	    echo "track: ($track)"
 	    ffmpeg -y -i "$track" -filter:a "atempo=0.75" -vn "../$track"
 	done
+	cd ".."
 	rm "tmp" -rf
+	cd ".."
     else
 	echo "Downloading: $(echo ${playlist_item##:*})"
 	yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
