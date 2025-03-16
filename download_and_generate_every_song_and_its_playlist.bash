@@ -19,30 +19,42 @@ playlists=(
     PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k:rhythm_doctor.m3u
 )
 
+commands=()
+
+mkdir playlists
+
 for playlist_item in ${playlists[@]}; do
-    echo "Generating $(echo ${playlist_item##*:})"
-    yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename "$(echo ${playlist_item##:*})" > "$(echo ${playlist_item##*:})"
+    commands+=("echo \"Generating $(echo ${playlist_item##*:})\" & yt-dlp --restrict-filenames -o '../pool/%(title)s.opus' --get-filename \" \$(echo ${playlist_item##:*})\" > \"$(echo playlists/${playlist_item##*:})\" &")
 done
 
-notify-send "Finished generating all playlists"
+(trap 'kill 0' SIGINT; eval ${commands[*]} wait)
 
-balatro_name="balatro.m3u"
+cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u > playlist/everything.m3u
+
+handle_balatro () {
+    mkdir -p "pool/tmp"
+    cd "pool/tmp"
+    echo "$(echo ${1##:*})"
+    yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
+    subcommands=()
+    balatro_list="$(ls -1)"
+    for track in $balatro_list; do
+	subcommands+=("echo \"track: ($track)\" & ffmpeg -y -i \"$track\" -strict -2 -filter:a \"atempo=0.75\" -vn \"../$track\" &")
+    done
+
+    (trap 'kill 0' SIGINT; eval ${subcommands[*]} wait)    
+    cd "../.."
+    rm "pool/tmp" -r
+}
+
+commands=()
 
 for playlist_item in ${playlists[@]}; do
-    if [ "$balatro_name" = "$(echo ${playlist_item##*:})" ]; then
-	mkdir -p "pool/tmp"
-	cd "pool/tmp"
-	echo "$(echo ${playlist_item##:*})"
-	yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${playlist_item##:*})";
-	balatro_list="$(ls -1)"
-	for track in $balatro_list; do
-	    echo "track: ($track)"
-	    ffmpeg -y -i "$track" -filter:a "atempo=0.75" -vn "../$track"
-	done
-	cd "../.."
-	rm "pool/tmp" -rf
+    if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
+	commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
     else
-	echo "Downloading: $(echo ${playlist_item##:*})"
-	yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
+	commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
     fi
 done;
+
+(trap 'kill 0' SIGINT; eval ${commands[*]} wait)
