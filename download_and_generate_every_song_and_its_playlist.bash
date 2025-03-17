@@ -36,13 +36,12 @@ handle_balatro () {
     cd "pool/tmp"
     echo "$(echo ${1##:*})"
     yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
-    subcommands=()
     balatro_list="$(ls -1)"
     for track in $balatro_list; do
-	subcommands+=("echo \"track: ($track)\" & ffmpeg -y -i \"$track\" -strict -2 -filter:a \"atempo=0.75\" -vn \"../$track\" &")
+	echo "track: ($track)"
+	ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track" &
     done
 
-    (trap 'kill 0' SIGINT; eval ${subcommands[*]} wait)    
     cd "../.."
     rm "pool/tmp" -r
 }
@@ -58,3 +57,20 @@ for playlist_item in ${playlists[@]}; do
 done;
 
 (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
