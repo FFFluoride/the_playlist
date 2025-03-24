@@ -1,11 +1,11 @@
-* Generate 'everything' playlist
-_Run this in the toplevel directory_
-  #+begin_src shell
-    cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u balatro.m3u > everything.m3u && notify-send "Generated everything"
-  #+end_src
-* Download and generate every playlist
-_Run this in the toplevel directory_
-#+begin_src shell
+* What's this project
+It's a set of scripts that downloads my playlists.
+
+* How does it work?
+** Playlists
+
+This is how I associate youtube's playlist ID's to easily rememberable playlist file names.
+#+begin_src bash :tangle yes :tangle commands.bash :comments org
   playlists=(
       PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU:balatro.m3u
       PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB:celeste.m3u
@@ -26,34 +26,72 @@ _Run this in the toplevel directory_
       PLTsWV3v1dCwpsDgjj2MLiBugQGH_H8D09:RoA.m3u
       PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k:rhythm_doctor.m3u
   )
+#+end_src
+
+** Generating the playlist files concurrently
+
+This is pretty gnarly by my standards.
+Basically, you make an array to sequence commands by looping once and then running the long running tasks in parallel by launching multiple subshells and using '&'.
+
+It's important that this runs in a subshell or else ctrl-c wouldn't kill all the processes.
+#+begin_src bash :tangle yes :tangle commands.bash :comments org
+  commands=()
+
+  mkdir playlists
 
   for playlist_item in ${playlists[@]}; do
-      echo "Generating $(echo ${playlist_item##*:})"
-      yt-dlp --restrict-filenames -o 'pool/%(title)s.opus' --get-filename "$(echo ${playlist_item##:*})" > "$(echo ${playlist_item##*:})"
+      commands+=("echo \"Generating $(echo ${playlist_item##*:})\" & yt-dlp --restrict-filenames -o '../pool/%(title)s.opus' --get-filename \" \$(echo ${playlist_item##:*})\" > \"$(echo playlists/${playlist_item##*:})\" &")
   done
 
-  notify-send "Finished generating all playlists"
+  (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
+#+end_src
 
-  balatro_name="balatro.m3u"
+** Generating custom playlists
+
+This simply generates the everything playlist which represents all the songs.
+
+More playlists coming soon...
+#+begin_src bash :tangle yes :tangle commands.bash :comments org
+  cat playlists/celeste.m3u playlists/hollow_knight.m3u playlists/terraria.m3u playlists/calamity_infernum.m3u playlists/baba.m3u playlists/deltarune.m3u playlists/undertale.m3u playlists/isaac_rebirth.m3u playlists/isaac_afterbirth.m3u playlists/isaac_repentance.m3u playlists/isaac_antibirth.m3u playlists/minecraft.m3u playlists/stardew_valley.m3u playlists/cassette_beasts.m3u playlists/RoA.m3u playlists/rhythm_doctor.m3u > playlists/everything.m3u
+#+end_src
+
+** Slowing down balatro tracks
+
+I wanted to sequence this, however, I couldn't get this to work for whatever reason, it seemed to hang. It's only 5 tracks though, so it's not really a big issue.
+
+Tracks are slowed down to 75% of of their original speed, just like in the game.
+#+begin_src bash :tangle yes :tangle commands.bash :comments org
+  handle_balatro () {
+      mkdir -p "pool/tmp"
+      cd "pool/tmp"
+      echo "$(echo ${1##:*})"
+      yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
+      balatro_list="$(ls -1)"
+      for track in $balatro_list; do
+	  echo "track: ($track)"
+	  ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track" &
+      done
+
+      cd "../.."
+      rm "pool/tmp" -r
+  }
+#+end_src
+
+** Downloading all the playlist songs in parallel
+
+Again, I sequence operations, then run them all at once.
+#+begin_src bash :tangle yes :tangle commands.bash :comments org
+  commands=()
 
   for playlist_item in ${playlists[@]}; do
-      if [ "$balatro_name" = "$(echo ${playlist_item##*:})" ]; then
-	  mkdir -p "pool/tmp"
-	  cd "pool/tmp"
-	  echo "$(echo ${playlist_item##:*})"
-	  yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${playlist_item##:*})";
-	  balatro_list="$(ls -1)"
-	  for track in $balatro_list; do
-	      echo "track: ($track)"
-	      ffmpeg -y -i "$track" -filter:a "atempo=0.75" -vn "../$track"
-	  done
-	  cd "../.."
-	  rm "pool/tmp" -rf
+      if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
+	  commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
       else
-	  echo "Downloading: $(echo ${playlist_item##:*})"
-	  yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' "$(echo ${playlist_item##:*})";
+	  commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
       fi
   done;
+
+  (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
 #+end_src
 * Generate a specific playlist
   _Run this in the toplevel directory_
