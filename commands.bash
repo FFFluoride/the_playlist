@@ -46,7 +46,7 @@ done
 
 # More playlists coming soon...
 
-cat celeste.m3u hollow_knight.m3u terraria.m3u calamity_infernum.m3u baba.m3u deltarune.m3u undertale.m3u isaac_rebirth.m3u isaac_afterbirth.m3u isaac_repentance.m3u isaac_antibirth.m3u minecraft.m3u stardew_valley.m3u cassette_beasts.m3u RoA.m3u rhythm_doctor.m3u > playlist/everything.m3u
+cat playlists/celeste.m3u playlists/hollow_knight.m3u playlists/terraria.m3u playlists/calamity_infernum.m3u playlists/baba.m3u playlists/deltarune.m3u playlists/undertale.m3u playlists/isaac_rebirth.m3u playlists/isaac_afterbirth.m3u playlists/isaac_repentance.m3u playlists/isaac_antibirth.m3u playlists/minecraft.m3u playlists/stardew_valley.m3u playlists/cassette_beasts.m3u playlists/RoA.m3u playlists/rhythm_doctor.m3u > playlists/everything.m3u
 
 # Slowing down balatro tracks
 
@@ -58,7 +58,7 @@ handle_balatro () {
     mkdir -p "pool/tmp"
     cd "pool/tmp"
     echo "$(echo ${1##:*})"
-    yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
+    yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
     balatro_list="$(ls -1)"
     for track in $balatro_list; do
 	echo "track: ($track)"
@@ -79,7 +79,7 @@ for playlist_item in ${playlists[@]}; do
     if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
 	commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
     else
-	commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
+	commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
     fi
 done;
 

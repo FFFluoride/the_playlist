@@ -65,7 +65,7 @@ Tracks are slowed down to 75% of of their original speed, just like in the game.
       mkdir -p "pool/tmp"
       cd "pool/tmp"
       echo "$(echo ${1##:*})"
-      yt-dlp -x --audio-quality 0 --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
+      yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
       balatro_list="$(ls -1)"
       for track in $balatro_list; do
 	  echo "track: ($track)"
@@ -87,7 +87,7 @@ Again, I sequence operations, then run them all at once.
       if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
 	  commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
       else
-	  commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
+	  commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
       fi
   done;
 
