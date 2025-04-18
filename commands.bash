@@ -4,23 +4,27 @@
 
 playlists=(
     PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU:balatro.m3u
-    PLY9u9wC7ApRJk-tG4_pBtH6ubEJ7svnOB:celeste.m3u
-    PLmOldskd2VbL7_t-NE9p6rEboq_v0AHko:hollow_knight.m3u
-    PLbJE2f8Bl_gRq7g69Z4xfHV7Je-WWvpdJ:terraria.m3u
-    PLsuCmTriuYXdOYZVaKyex5lIy3lT9K_PW:calamity.m3u
-    PLfA6eOuWprRO33noGigJRXO1WXbkfmIlV:calamity_infernum.m3u
-    PLMoZgWjm14OF2AWFfPc3cyQH7T2SC89jo:baba.m3u
-    PLEUKcNuP7bDX9RoW3HqYR6EFvWZh12upZ:deltarune.m3u
-    PLpJl5XaLHtLX-pDk4kctGxtF4nq6BIyjg:undertale.m3u
-    PLhPp-QAUKF_iiixYtOGmynw-BMEju-EWo:isaac_rebirth.m3u
-    PLhPp-QAUKF_gJ9eB-wSlfliMT_6ymDuiI:isaac_afterbirth.m3u
-    PL_sXFbaP261h0WAWyJWKHbLa_haABQHBt:isaac_repentance.m3u
-    PLrWR7klg98H0DbavfBz66OJO_E3wxKVSZ:isaac_antibirth.m3u
-    PLNG8gFz9vUpsLXnWdCEf0svaFEfbY-kHh:minecraft.m3u
-    PLyfXx1BeqwFbl5jg6swxk1XonI-4ldG9X:stardew_valley.m3u
-    PLKDOdCjxOjzL6dnS9DsU4aNYU0ignNtWD:cassette_beasts.m3u
-    PLTsWV3v1dCwpsDgjj2MLiBugQGH_H8D09:RoA.m3u
-    PLHVUN_wezMf9LHGahDuuIiPlog4LI9J8k:rhythm_doctor.m3u
+    PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi:celeste.m3u
+    PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb:hollow_knight.m3u
+    PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp:silksong.m3u
+    PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc:terraria.m3u
+    PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc:calamity.m3u
+    PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq:calamity_infernum.m3u
+    PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc:baba.m3u
+    PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv:deltarune.m3u
+    PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc:undertale.m3u
+    PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_:isaac_rebirth.m3u
+    PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj:isaac_afterbirth.m3u
+    PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N:isaac_repentance.m3u
+    PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1:isaac_antibirth.m3u
+    PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj:minecraft.m3u
+    PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV:stardew_valley.m3u
+    PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd:cassette_beasts.m3u
+    PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x:RoA.m3u
+    PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R:rhythm_doctor.m3u
+    PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H:luck_be_a_landlord.m3u
+    PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_:anime.m3u
+    PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs:misc.m3u
 )
 
 # Generating the playlist files concurrently
