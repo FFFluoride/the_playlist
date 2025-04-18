@@ -156,15 +156,15 @@ Then run the commands.bash script
   - [X] TF2
     - [X] ID acquired
     - [X] Playlist generated
-* Random Playlist [0/1]
+* Random Playlist
 ** making it
-  - [ ] Make a youtube playlist with random stuff
-    - [ ] ID acquired
-    - [ ] Platlist generated
+  - [X] Make a youtube playlist with random stuff
+    - [X] ID acquired
+    - [X] Platlist generated
 ** Playlist items
-  - [ ] Naz - Tay K Returns to Dreamland 4
-  - [ ] Pink Clouds and sticky rain (lookup xidnaf)
-  - [ ] smash bros brawl main theme
-  - [ ] smash bros ultimate main theme
-  - [ ] Xomu - Walpurgis Night
-  - [ ] Terraria Slimeium Mod OST - Gelatinous Grasslands
+  - [X] Naz - Tay K Returns to Dreamland 4
+  - [X] Pink Clouds and sticky rain (lookup xidnaf)
+  - [X] smash bros brawl main theme
+  - [X] smash bros ultimate main theme
+  - [X] Xomu - Walpurgis Night
+  - [X] Terraria Slimeium Mod OST - Gelatinous Grasslands
