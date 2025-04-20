@@ -98,7 +98,7 @@ Again, I sequence operations, then run them all at once.
 #+end_src
 * How to run
 To extract source code in emacs use the =org-babel-tangle= or =org-babel-tangle-file=
-=C-c C-v C-t=and =C-c C-v C-f= respectively.
+=C-c C-v C-t= and =C-c C-v C-f= respectively.
 
 Then run the commands.bash script
 * Goals [14/15]
