@@ -28,36 +28,6 @@ It's a set of scripts that downloads my playlists.
 | anime              | PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_ |
 | misc               | PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs |
 
-#+begin_src bash :tangle no :var playlists=playlists-table :rownames no :colnames yes
-  for playlist_key in ${!playlists[@]}; do
-      echo "$playlist_key -- ${playlists[$playlist_key]}"
-  done
-#+end_src
-
-#+RESULTS:
-| isaac_afterbirth   | -- | PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj |
-| hollow_knight      | -- | PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb |
-| luck_be_a_landlord | -- | PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H |
-| terraria           | -- | PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc |
-| isaac_repentance   | -- | PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N |
-| anime              | -- | PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_ |
-| balatro            | -- | PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU |
-| silksong           | -- | PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp |
-| misc               | -- | PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs |
-| celeste            | -- | PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi |
-| calamity_infernum  | -- | PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq |
-| minecraft          | -- | PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj |
-| baba               | -- | PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc |
-| isaac_rebirth      | -- | PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_ |
-| RoA                | -- | PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x |
-| undertale          | -- | PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc |
-| stardew_valley     | -- | PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV |
-| calamity           | -- | PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc |
-| isaac_antibirth    | -- | PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1 |
-| cassette_beasts    | -- | PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd |
-| rhythm_doctor      | -- | PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R |
-| deltarune          | -- | PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv |
-
 * How does it work?
 ** Playlists
 Emacs declares an associative array based on the table of playlists
