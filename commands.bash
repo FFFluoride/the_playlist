@@ -50,7 +50,7 @@ done
 
 # More playlists coming soon...
 
-cat playlists/celeste.m3u playlists/hollow_knight.m3u playlists/terraria.m3u playlists/calamity_infernum.m3u playlists/baba.m3u playlists/deltarune.m3u playlists/undertale.m3u playlists/isaac_rebirth.m3u playlists/isaac_afterbirth.m3u playlists/isaac_repentance.m3u playlists/isaac_antibirth.m3u playlists/minecraft.m3u playlists/stardew_valley.m3u playlists/cassette_beasts.m3u playlists/RoA.m3u playlists/rhythm_doctor.m3u > playlists/everything.m3u
+eval "cat ${playlists[@]//*:/playlists\/} > playlists/everything.m3u"
 
 # Slowing down balatro tracks
 
@@ -63,10 +63,10 @@ handle_balatro () {
     cd "pool/tmp"
     echo "$(echo ${1##:*})"
     yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
-    balatro_list="$(ls -1)"
-    for track in $balatro_list; do
+    balatro_list=($(ls))
+    for track in ${balatro_list[@]}; do
 	echo "track: ($track)"
-	ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track" &
+	ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track"
     done
 
     cd "../.."
