@@ -65,8 +65,8 @@ handle_balatro () {
     yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
     balatro_list=($(ls))
     for track in ${balatro_list[@]}; do
-	echo "track: ($track)"
-	ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track"
+	  echo "track: ($track)"
+	  ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track"
     done
 
     cd "../.."
@@ -81,9 +81,9 @@ commands=()
 
 for playlist_item in ${playlists[@]}; do
     if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
-	commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
+	  commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
     else
-	commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
+	  commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
     fi
 done;
 
