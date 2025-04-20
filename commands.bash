@@ -1,46 +1,42 @@
 # Playlists
-
-# This is how I associate youtube's playlist ID's to easily rememberable playlist file names.
-
-playlists=(
-    PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU:balatro.m3u
-    PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi:celeste.m3u
-    PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb:hollow_knight.m3u
-    PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp:silksong.m3u
-    PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc:terraria.m3u
-    PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc:calamity.m3u
-    PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq:calamity_infernum.m3u
-    PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc:baba.m3u
-    PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv:deltarune.m3u
-    PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc:undertale.m3u
-    PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_:isaac_rebirth.m3u
-    PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj:isaac_afterbirth.m3u
-    PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N:isaac_repentance.m3u
-    PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1:isaac_antibirth.m3u
-    PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj:minecraft.m3u
-    PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV:stardew_valley.m3u
-    PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd:cassette_beasts.m3u
-    PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x:RoA.m3u
-    PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R:rhythm_doctor.m3u
-    PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H:luck_be_a_landlord.m3u
-    PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_:anime.m3u
-    PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs:misc.m3u
-)
-
-# Generating the playlist files concurrently
+# Emacs declares an associative array based on the table of playlists
 
 # This is pretty gnarly by my standards.
 # Basically, you make an array to sequence commands by looping once and then running the long running tasks in parallel by launching multiple subshells and using '&'.
 
 # It's important that this runs in a subshell or else ctrl-c wouldn't kill all the processes.
 
+unset playlists
+declare -A playlists
+playlists['balatro']='PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU'
+playlists['silksong']='PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp'
+playlists['celeste']='PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi'
+playlists['hollow_knight']='PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb'
+playlists['terraria']='PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc'
+playlists['calamity']='PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc'
+playlists['calamity_infernum']='PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq'
+playlists['baba']='PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc'
+playlists['deltarune']='PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv'
+playlists['undertale']='PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc'
+playlists['isaac_rebirth']='PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_'
+playlists['isaac_afterbirth']='PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj'
+playlists['isaac_repentance']='PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N'
+playlists['isaac_antibirth']='PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1'
+playlists['minecraft']='PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj'
+playlists['stardew_valley']='PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV'
+playlists['cassette_beasts']='PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd'
+playlists['RoA']='PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x'
+playlists['rhythm_doctor']='PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R'
+playlists['luck_be_a_landlord']='PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H'
+playlists['anime']='PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_'
+playlists['misc']='PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs'
 commands=()
 
 mkdir playlists
 
-for playlist_item in ${playlists[@]}; do
-    commands+=("echo \"Generating $(echo ${playlist_item##*:})\" & yt-dlp --restrict-filenames -o '../pool/%(title)s.opus' --get-filename \" \$(echo ${playlist_item##:*})\" > \"$(echo playlists/${playlist_item##*:})\" &")
-done
+for playlist_name in ${!playlists[@]}; do
+      commands+=("echo \"Generating \\\"$playlist_name\\\" playlist\" & yt-dlp --restrict-filenames -o '../pool/%(title)s.opus' --get-filename \"${playlists[$playlist_name]}\" > \"$(echo playlists/${playlist_name}.m3u)\" &")
+  done
 
 (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
 
@@ -50,7 +46,8 @@ done
 
 # More playlists coming soon...
 
-eval "cat ${playlists[@]//*:/playlists\/} > playlists/everything.m3u"
+playlist_keys=(${!playlists[@]})
+eval "cat ${playlist_keys[@]//*/playlists\/&.m3u} > playlists/everything.m3u"
 
 # Slowing down balatro tracks
 
@@ -61,8 +58,8 @@ eval "cat ${playlists[@]//*:/playlists\/} > playlists/everything.m3u"
 handle_balatro () {
     mkdir -p "pool/tmp"
     cd "pool/tmp"
-    echo "$(echo ${1##:*})"
-    yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "$(echo ${1##:*})";
+    echo "$1"
+    yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o '%(title)s' "${playlists[$1]}";
     balatro_list=($(ls))
     for track in ${balatro_list[@]}; do
 	  echo "track: ($track)"
@@ -79,11 +76,11 @@ handle_balatro () {
 
 commands=()
 
-for playlist_item in ${playlists[@]}; do
-    if [ "balatro.m3u" = "$(echo ${playlist_item##*:})" ]; then
-	  commands+=("echo \"\" & handle_balatro \"$playlist_item\" &")
+for playlist_key in ${!playlists[@]}; do
+    if [ "balatro" = "$playlist_key" ]; then
+	  commands+=("echo \"Handling balatro\" & handle_balatro \"$playlist_key\" & ")
     else
-	  commands+=("echo \"Downloading: $(echo ${playlist_item##:*})\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"$(echo ${playlist_item##:*})\" &")
+	  commands+=("echo \"Downloading: \"$playlist_key\"\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"${playlists[$playlist_key]}\" &")
     fi
 done;
 
