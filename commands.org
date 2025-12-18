@@ -16,7 +16,7 @@
 * What's this project
 It's a script that downloads my playlists and puts them into nice playlists (m3u files)
 * How to run
-To extract source code in emacs use the =org-babel-tangle= (=C-v C-t=)
+To extract source code in emacs use the =org-babel-tangle= (=C-c C-v C-t=)
 
 Then run the =the-playlist.bash= script
 * Data
