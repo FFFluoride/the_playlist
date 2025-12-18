@@ -1,14 +1,25 @@
-* Table of Contets :TOC_1:
+#+TITLE: The Playlist
+#+AUTHOR: FFFluoride
+#+LANGUAGE: en
+#+OPTIONS: ':nil *:t -:t ::t <:t \n:nil ^:t arch:headline author:t expand-links:t broken-links:mark c:nil creator:t d:(not "LOGBOOK") date:t e:t f:t H:3 inline:nil num:t pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t |:t toc:1
+#+transclude: [[file:~/.config/emacs/table-lookup-settings.org]]
+
+* Table of Contents :TOC_1:
 - [[#whats-this-project][What's this project]]
-- [[#current-playlists][Current playlists]]
-- [[#how-does-it-work][How does it work?]]
 - [[#how-to-run][How to run]]
-- [[#goals-1617][Goals]]
+- [[#data][Data]]
+- [[#collecting-playlists][Collecting playlists]]
+- [[#downloading-audio][Downloading Audio]]
+- [[#executing-commands][Executing commands]]
+- [[#everything-playlist][Everything playlist]]
 
 * What's this project
-It's a set of scripts that downloads my playlists.
+It's a script that downloads my playlists and puts them into nice playlists (m3u files)
+* How to run
+To extract source code in emacs use the =org-babel-tangle= (=C-v C-t=)
 
-* Current playlists
+Then run the =the-playlist.bash= script
+* Data
 #+NAME: playlists-table
 | name               | id                                 |
 |--------------------+------------------------------------|
@@ -35,37 +46,51 @@ It's a set of scripts that downloads my playlists.
 | anime              | PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_ |
 | misc               | PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs |
 
-* How does it work?
-** Playlists
-Emacs declares an associative array based on the table of playlists
+#+NAME: op-table
+| operation          | command                                                               |
+|--------------------+-----------------------------------------------------------------------|
+| naiive_download_pl | yt-dlp -t aac --restrict-filenames -o 'pool/%(title)s'                |
+| download_pl_m3u    | yt-dlp --restrict-filenames -o '../pool/%(title)s.m4a' --get-filename |
 
-This is pretty gnarly by my standards.
-Basically, you make an array to sequence commands by looping once and then running the long running tasks in parallel by launching multiple subshells and using '&'.
+* Collecting playlists
+Queue up commands that download video titles and attatch the m4a file extension and put in an m3u file in the appropriate place
+#+begin_src bash :var download_playlists_function=table-lookup(table=op-table,value="download_pl_m3u") :comments org :var playlists=playlists-table :tangle the-playlist.bash
 
-It's important that this runs in a subshell or else ctrl-c wouldn't kill all the processes.
-#+begin_src bash :tangle yes :tangle commands.bash :comments org :var playlists=playlists-table :rownames no :colnames yes
   commands=()
 
   mkdir playlists
 
   for playlist_name in ${!playlists[@]}; do
-        commands+=("echo \"Generating \\\"$playlist_name\\\" playlist\" & yt-dlp --restrict-filenames -o '../pool/%(title)s.opus' --get-filename \"${playlists[$playlist_name]}\" > \"$(echo playlists/${playlist_name}.m3u)\" &")
-    done
+      echo "[THE PLAYLIST] Added $playlist_name to queue"
+      commands+=("($download_playlists_function ${playlists[$playlist_name]} > playlists/${playlist_name}.m3u && echo \"[THE PLAYLIST] Generated \\\"$playlist_name\\\" playlist\") &")
+  done
+#+end_src
 
+* Downloading Audio
+Queue up commands that download audio from playlists
+#+begin_src bash :var download_audio_pl=table-lookup(table=op-table,value="naiive_download_pl") :comments org :tangle the-playlist.bash
+
+  for playlist_name in ${!playlists[@]}; do
+      echo "[THE PLAYLIST] Queued up $playlist_name playlist"
+      commands+=("($download_audio_pl ${playlists[$playlist_name]} && echo \"[THE PLAYLIST] Finished Downloading $playlist_name\") &")
+  done
+#+end_src
+
+* Executing commands
+Up to this point we've built up a queue of commands. The commands get executed in a parallel way and in a way that when you press =C-c= (Ctrl-C) in the terminal, it exits propperly. This way also insures the terminal doesn't hang (pretty nifty eh?)
+#+begin_src bash :comments org :tangle the-playlist.bash
   (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
 #+end_src
+Yup that's it
 
-** Generating custom playlists
-
-This simply generates the everything playlist which represents all the songs.
-
-More playlists coming soon...
-#+begin_src bash :tangle yes :tangle commands.bash :comments org
-  playlist_keys=(${!playlists[@]})
-  eval "cat ${playlist_keys[@]//*/playlists\/&.m3u} > playlists/everything.m3u"
+* Everything playlist
+Generates the *everything* playlist
+#+begin_src bash :comments org :tangle the-playlist.bash
+  rm -f playlists/everything.m3u
+  cat playlists/* > playlists/everything.m3u
 #+end_src
 
-** Slowing down balatro tracks
+* TODO COMMENT Slowing down balatro tracks
 
 I wanted to sequence this, however, I couldn't get this to work for whatever reason, it seemed to hang. It's only 5 tracks though, so it's not really a big issue.
 
@@ -87,45 +112,9 @@ Tracks are slowed down to 75% of of their original speed, just like in the game.
   }
 #+end_src
 
-** Downloading all the playlist songs in parallel
-
-Again, I sequence operations, then run them all at once.
-#+begin_src bash :tangle yes :tangle commands.bash :comments org
-  commands=()
-
-  for playlist_key in ${!playlists[@]}; do
-      if [ "balatro" = "$playlist_key" ]; then
-  	  commands+=("echo \"Handling balatro\" & handle_balatro \"$playlist_key\" & ")
-      else
-  	  commands+=("echo \"Downloading: \"$playlist_key\"\" & yt-dlp -x --audio-quality 0 --audio-format opus --restrict-filenames -o 'pool/%(title)s' \"${playlists[$playlist_key]}\" &")
-      fi
-  done;
-
-  (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
-#+end_src
-* How to run
-To extract source code in emacs use the =org-babel-tangle= or =org-babel-tangle-file=, =C-c C-v C-t= and =C-c C-v C-f= respectively.
-
-Then run the commands.bash script
-* TODO Goals [16/17]
-  - [X] Tailored playlist
-  - [X] Terraria
-  - [X] Calamity Mod (Including extra)
-  - [X] Calamity Infernum Mod
-  - [X] Baba
-  - [X] Deltarune
-  - [X] Undertale
-  - [X] Isaac [4/4]
-    - [X] Rebirth
-    - [X] Isaac Afterbirth
-    - [X] Isaac Repentance
-    - [X] Isaac Antibirth
-  - [X] Minecraft
-  - [X] Stardew Valley
-  - [X] Cassette beasts
-  - [X] Rivals of aether
-  - [X] Rhythm doctor
+* TODO COMMENT Goals [0/1]
+  - [ ] Fix Balatro Playlist
+  - [ ] Renaming specific vids according to id
+  - [ ] Human Resource machine (when I finish it)
+  - [ ] Fix the anime playlists (e.g. alternate ops, extended endings)
   - [ ] Drawn to life: The next chapter
-  - [X] TF2
-  - [X] Anime
-  - [X] Misc
