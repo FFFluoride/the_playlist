@@ -51,8 +51,14 @@ done
 
 (trap 'kill 0' SIGINT; eval ${commands[*]} wait)
 
-# Everything playlist
+# Custom Playlists
 # Generates the *everything* playlist
 
 rm -f playlists/everything.m3u
 cat playlists/* > playlists/everything.m3u
+
+
+# Generates the "isaac" playlist
+
+rm playlists/isaac
+cat playlists/isaac* > playlists/isaac

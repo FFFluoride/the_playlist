@@ -11,7 +11,8 @@
 - [[#collecting-playlists][Collecting playlists]]
 - [[#downloading-audio][Downloading Audio]]
 - [[#executing-commands][Executing commands]]
-- [[#everything-playlist][Everything playlist]]
+- [[#custom-playlists][Custom Playlists]]
+- [[#goals-01][Goals]]
 
 * What's this project
 It's a script that downloads my playlists and puts them into nice playlists (m3u files)
@@ -83,13 +84,17 @@ Up to this point we've built up a queue of commands. The commands get executed i
 #+end_src
 Yup that's it
 
-* Everything playlist
+* Custom Playlists
 Generates the *everything* playlist
 #+begin_src bash :comments org :tangle the-playlist.bash
   rm -f playlists/everything.m3u
   cat playlists/* > playlists/everything.m3u
 #+end_src
-
+Generates the "isaac" playlist
+#+begin_src bash :comments org :tangle the-playlist.bash
+  rm playlists/isaac
+  cat playlists/isaac* > playlists/isaac
+#+end_src
 * TODO COMMENT Slowing down balatro tracks
 
 I wanted to sequence this, however, I couldn't get this to work for whatever reason, it seemed to hang. It's only 5 tracks though, so it's not really a big issue.
@@ -112,9 +117,11 @@ Tracks are slowed down to 75% of of their original speed, just like in the game.
   }
 #+end_src
 
-* TODO COMMENT Goals [0/1]
+* TODO Goals [0/1]
   - [ ] Fix Balatro Playlist
+  - [ ] Use permanent [[https://www.youtube.com/@toby-fox-music/releases][Toby Fox]] Undertale and deltarune
   - [ ] Renaming specific vids according to id
-  - [ ] Human Resource machine (when I finish it)
   - [ ] Fix the anime playlists (e.g. alternate ops, extended endings)
+  - [ ] Make the actual silksong playlist
   - [ ] Drawn to life: The next chapter
+  - [ ] Human Resource machine (when I finish it)
