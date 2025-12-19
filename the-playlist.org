@@ -12,7 +12,7 @@
 - [[#downloading-audio][Downloading Audio]]
 - [[#executing-commands][Executing commands]]
 - [[#custom-playlists][Custom Playlists]]
-- [[#goals-18][Goals]]
+- [[#goals-17][Goals]]
 
 * What's this project
 It's a script that downloads my playlists and puts them into nice playlists (m3u files)
@@ -110,7 +110,7 @@ Generates the "isaac" playlist
   rm playlists/isaac
   cat playlists/isaac* > playlists/isaac
 #+end_src
-* TODO Goals [1/8]
+* TODO Goals [1/7]
   - [X] Fix Balatro Playlist
   - [ ] Renaming specific vids according to id
   - [ ] Have =commands= be a queue of getting filenames and downloading audio of individual vids so that I can implement sleeping as a [[https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#workarounds][workaround]] avoiding "Too many requests" error
