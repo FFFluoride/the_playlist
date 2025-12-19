@@ -113,7 +113,7 @@ Generates the "isaac" playlist
 * TODO Goals [1/7]
   - [X] Fix Balatro Playlist
   - [ ] Renaming specific vids according to id
-  - [ ] Have =commands= be a queue of getting filenames and downloading audio of individual vids so that I can implement sleeping as a [[https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#workarounds][workaround]] avoiding "Too many requests" error
+  - [ ] Have =commands= be a queue of getting filenames and downloading audio of individual vids so that I can implement sleeping as a [[https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#workarounds][workaround]] avoiding "Too many requests" error OR get rid of concurrent file downloading and use builtin [[https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#workarounds][workarounds]] in yt-dlp
   - [ ] Use permanent [[https://www.youtube.com/@toby-fox-music/releases][Toby Fox]] Undertale and deltarune
   - [ ] Fix the anime playlists (e.g. alternate ops, extended endings)
   - [ ] Make the actual silksong playlist
