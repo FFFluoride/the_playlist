@@ -50,7 +50,7 @@ Then run the =the-playlist.bash= script
 #+NAME: op-table
 | operation          | command                                                               |
 |--------------------+-----------------------------------------------------------------------|
-| naiive_download_pl | yt-dlp -t aac --restrict-filenames -o 'pool/%(title)s'                |
+| naiive_download_pl | yt-dlp -t aac --restrict-filenames                                    |
 | download_pl_m3u    | yt-dlp --restrict-filenames -o '../pool/%(title)s.m4a' --get-filename |
 
 * Collecting playlists
@@ -69,11 +69,26 @@ Queue up commands that download video titles and attatch the m4a file extension 
 
 * Downloading Audio
 Queue up commands that download audio from playlists
+"balatro" must be detected such that it's tracks can be slowed down after downloading to play like it does in game
 #+begin_src bash :var download_audio_pl=table-lookup(table=op-table,value="naiive_download_pl") :comments org :tangle the-playlist.bash
-
+  handle_balatro () {
+      $download_audio_pl -o 'pool/tmp/%(title)s' $1
+      cd "pool/tmp"
+      balatro_list=($(ls))
+      for track in ${balatro_list[@]}; do
+  	echo "[THE PLAYLIST] Slowing down balatro track: \"$track\""
+  	ffmpeg -y -i "$track" -strict -2 -filter:a "atempo=0.75" -vn "../$track"
+      done
+      cd "../.."
+      rm "pool/tmp" -r
+  }
   for playlist_name in ${!playlists[@]}; do
       echo "[THE PLAYLIST] Queued up $playlist_name playlist"
-      commands+=("($download_audio_pl ${playlists[$playlist_name]} && echo \"[THE PLAYLIST] Finished Downloading $playlist_name\") &")
+      if [ "$playlist_name" = "balatro" ]; then
+  	commands+=("(handle_balatro ${playlists[$playlist_name]} && echo \"[THE PLAYLIST] Finished downloading $playlist_name playlist\") &")
+      else
+  	commands+=("($download_audio_pl -o 'pool/%(title)s' ${playlists[$playlist_name]} && echo \"[THE PLAYLIST] Finished downloading $playlist_name playlist\") &")
+      fi
   done
 #+end_src
 
