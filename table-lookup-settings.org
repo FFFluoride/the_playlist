@@ -1,0 +1,9 @@
+#+TITLE: Lookup Table Settings
+
+#+NAME: empty-table
+|   |
+
+#+NAME: table-lookup
+#+begin_src emacs-lisp :var table=empty-table :var value="foo" :var find-row=1 :var search-row=0 :tangle no
+  (my/table-lookup table value find-row search-row)
+#+end_src

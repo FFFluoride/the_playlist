@@ -2,7 +2,7 @@
 #+AUTHOR: FFFluoride
 #+LANGUAGE: en
 #+OPTIONS: ':nil *:t -:t ::t <:t \n:nil ^:t arch:headline author:t expand-links:t broken-links:mark c:nil creator:t d:(not "LOGBOOK") date:t e:t f:t H:3 inline:nil num:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t |:t toc:1
-#+transclude: [[file:~/.config/emacs/table-lookup-settings.org]]
+#+transclude: [[file:table-lookup-settings.org]]
 
 * Table of Contents :TOC_1:
 - [[#whats-this-project][What's this project]]
