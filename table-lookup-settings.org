@@ -3,7 +3,18 @@
 #+NAME: empty-table
 |   |
 
+=ta= = =table=
+=v= = =value=
+=f= = =find-row=
+=s= = =search-row=
+
 #+NAME: table-lookup
 #+begin_src emacs-lisp :var table=empty-table :var value="foo" :var find-row=1 :var search-row=0 :tangle no
+  (defun my/table-lookup (ta v &optional f s)
+      (org-lookup-first
+       v
+       (mapcar (lambda (row) (nth (if s s 0) row)) ta)
+       (mapcar (lambda (row) (nth (if f f (if s (+ 1 s) 1)) row)) ta)))
+
   (my/table-lookup table value find-row search-row)
 #+end_src
