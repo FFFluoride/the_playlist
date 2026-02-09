@@ -2,7 +2,15 @@
 #+AUTHOR: FFFluoride
 #+LANGUAGE: en
 #+OPTIONS: ':nil *:t -:t ::t <:t \n:nil ^:t arch:headline author:t expand-links:t broken-links:mark c:nil creator:t d:(not "LOGBOOK") date:t e:t f:t H:3 inline:nil num:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t |:t toc:1
-#+transclude: [[file:table-lookup-settings.org]]
+#+title: Lookup Table Settings
+
+#+name: empty-table
+|   |
+
+#+name: table-lookup
+#+begin_src emacs-lisp :var table=empty-table :var value="foo" :var find-row=1 :var search-row=0 :tangle no
+  (my/table-lookup table value find-row search-row)
+#+end_src
 
 * Table of Contents :TOC_1:
 - [[#whats-this-project][What's this project]]
@@ -108,7 +116,7 @@ Generates the *everything* playlist
 Generates the "isaac" playlist
 #+begin_src bash :comments org :tangle the-playlist.bash
   rm playlists/isaac
-  cat playlists/isaac* > playlists/isaac
+  cat playlists/isaac* > playlists/isaac.m3u
 #+end_src
 * TODO Goals [1/7]
   - [X] Fix Balatro Playlist
