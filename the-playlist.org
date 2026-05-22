@@ -2,17 +2,15 @@
 #+AUTHOR: FFFluoride
 #+LANGUAGE: en
 #+OPTIONS: ':nil *:t -:t ::t <:t \n:nil ^:t arch:headline author:t expand-links:t broken-links:mark c:nil creator:t d:(not "LOGBOOK") date:t e:t f:t H:3 inline:nil num:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t timestamp:t |:t toc:1
-#+title: Lookup Table Settings
-
-#+name: empty-table
-|   |
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+#+transclude: [[file:table-lookup-settings.org::*Content][Content]]
 
 #+name: table-lookup
 #+begin_src emacs-lisp :var table=empty-table :var value="foo" :var find-row=1 :var search-row=0 :tangle no
   (my/table-lookup table value find-row search-row)
 #+end_src
 
-* Table of Contents :TOC_1:
+* Table of Contents :TOC_1:noexport:
 - [[#whats-this-project][What's this project]]
 - [[#how-to-run][How to run]]
 - [[#data][Data]]
@@ -29,37 +27,41 @@ To extract source code in emacs use the =org-babel-tangle= (=C-c C-v C-t=)
 
 Then run the =the-playlist.bash= script
 * Data
+#+CAPTION: This is a table matching the playlist names with their youtube playlist ids
+#+ATTR_HTML: :border 2 :rules all :frame border
 #+NAME: playlists-table
-| name               | id                                 |
-|--------------------+------------------------------------|
-| balatro            | PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU |
-| silksong           | PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp |
-| celeste            | PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi |
-| hollow_knight      | PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb |
-| terraria           | PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc |
-| calamity           | PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc |
-| calamity_infernum  | PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq |
-| baba               | PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc |
-| deltarune          | PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv |
-| undertale          | PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc |
-| isaac_rebirth      | PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_ |
-| isaac_afterbirth   | PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj |
-| isaac_repentance   | PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N |
-| isaac_antibirth    | PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1 |
-| minecraft          | PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj |
-| stardew_valley     | PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV |
-| cassette_beasts    | PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd |
-| RoA                | PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x |
-| rhythm_doctor      | PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R |
-| luck_be_a_landlord | PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H |
-| anime              | PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_ |
-| misc               | PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs |
+| name                 | id                                   |
+|----------------------+--------------------------------------|
+| =balatro=            | =PLEITERw4PaKFs_uS0MoXkIfGbsYJHmWVU= |
+| =silksong=           | =PLyfXx1BeqwFYFwnXDZo6xYSIsek2x2fhp= |
+| =celeste=            | =PLyfXx1BeqwFbnI87AyqLP5XcEg1u5kydi= |
+| =hollow_knight=      | =PLyfXx1BeqwFZXtJPE153jA-8NJWz579Pb= |
+| =terraria=           | =PLyfXx1BeqwFb9eMbR78HzJtvhAuGH2rnc= |
+| =calamity=           | =PLyfXx1BeqwFY7_xMkP9BCAogmUQbwFBjc= |
+| =calamity_infernum=  | =PLyfXx1BeqwFb0IcIT2_cbShbguqGOvnaq= |
+| =baba=               | =PLyfXx1BeqwFaO6xFIQXFhQTJtFdP4WYyc= |
+| =deltarune=          | =PLyfXx1BeqwFakIcMEOb5L3hLLuTWHZhFv= |
+| =undertale=          | =PLyfXx1BeqwFZoI5JKqSOCYTq9_fxIqPPc= |
+| =isaac_rebirth=      | =PLyfXx1BeqwFYwjv_IHypwL_QeR4IT4rW_= |
+| =isaac_afterbirth=   | =PLyfXx1BeqwFYEsmSq2YcXYfPoSxhqUdKj= |
+| =isaac_repentance=   | =PLyfXx1BeqwFYukH-L7NXfhom6UPaSb33N= |
+| =isaac_antibirth=    | =PLyfXx1BeqwFZfbk9ksALFm-Q6hmQPacQ1= |
+| =minecraft=          | =PLyfXx1BeqwFZ3paVLhJwsHpuWM4zlhLPj= |
+| =stardew_valley=     | =PLyfXx1BeqwFYtf2Dntv405dH8I9FP5GcV= |
+| =cassette_beasts=    | =PLyfXx1BeqwFZw1-JcUkkxHcodnwr_W6Nd= |
+| =RoA=                | =PLyfXx1BeqwFYNtQ2sBVUvZ0_PUYvGLe_x= |
+| =rhythm_doctor=      | =PLyfXx1BeqwFYvPfUFBjkZvmpFYFbSJQ2R= |
+| =luck_be_a_landlord= | =PLyfXx1BeqwFbcG-8eBmiIbmDtNmn4tq2H= |
+| =anime=              | =PLyfXx1BeqwFZcwV_yqpe5khtlKWGf0jM_= |
+| =misc=               | =PLyfXx1BeqwFZzRwmxQ1To7HQN37pj1EAs= |
 
+#+CAPTION: This is a table with some bash commands
+#+ATTR_HTML: :border 2 :rules all :frame border
 #+NAME: op-table
-| operation          | command                                                               |
-|--------------------+-----------------------------------------------------------------------|
-| naiive_download_pl | yt-dlp -t aac --restrict-filenames                                    |
-| download_pl_m3u    | yt-dlp --restrict-filenames -o '../pool/%(title)s.m4a' --get-filename |
+| operation            | command                                                               |
+|----------------------+-----------------------------------------------------------------------|
+| =naiive_download_pl= | yt-dlp -t aac --restrict-filenames                                    |
+| =download_pl_m3u=    | yt-dlp --restrict-filenames -o '../pool/%(title)s.m4a' --get-filename |
 
 * Collecting playlists
 Queue up commands that download video titles and attatch the m4a file extension and put in an m3u file in the appropriate place

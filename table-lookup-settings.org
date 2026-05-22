@@ -1,5 +1,4 @@
-#+TITLE: Lookup Table Settings
-
+* Content :noexport:
 #+NAME: empty-table
 |   |
 
